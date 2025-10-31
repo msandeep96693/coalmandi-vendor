@@ -92,6 +92,23 @@ public class vendorBasicpage
 		js.executeScript("arguments[0].click();", element );
 	}
 	
+	public void selectDropdownOption(List<WebElement> dropdownOptions, String optionName) {
+	    boolean found = false;
+
+	    for (WebElement option : dropdownOptions) {
+	    	System.out.println("option name :- "+ option.getText());
+	    	
+	        if (option.getText().equalsIgnoreCase(optionName)) {
+	            javascriptclick(option);
+	            found = true;
+	            break;
+	        }
+	    }
+
+	    if (!found) {
+	        System.out.println("Option not found: " + optionName);
+	    }
+	}
 	
 	// --------------------------------------------------------------------------------
 	
