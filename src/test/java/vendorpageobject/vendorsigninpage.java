@@ -27,6 +27,11 @@ public class vendorsigninpage extends vendorBasicpage {
 	@FindBy(xpath = "//img[@alt='Coal Mandi']/../following-sibling::nav//button")
 	private List<WebElement> btnsSideBar;
 	
+	@FindBy(xpath = "//span[@aria-label='user']/..")
+	private WebElement clickonprofileicon;
+	
+	@FindBy(xpath = "//button[.='Logout']")
+	private WebElement logoutbtn;
 	
 	public void vendorsignin(String email, String pwd) throws InterruptedException
 	{
@@ -42,8 +47,13 @@ public class vendorsigninpage extends vendorBasicpage {
 		waitforElement(btnLogin);
 		javascriptclick(btnLogin);
 		
-		
-		
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
+//		waitforElement(clickonprofileicon);
+//		javascriptclick(clickonprofileicon);
+//		
+//		waitforElement(logoutbtn);
+//		javascriptclick(logoutbtn);
+//		
+//		Thread.sleep(2000);
 	}
 }
