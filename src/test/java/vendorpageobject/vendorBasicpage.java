@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -68,6 +69,12 @@ public class vendorBasicpage
 		//element.click();
 	}
 	
+	public void Hiddenelement(WebElement element)
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].style.display='block';",element);
+	}
+	
 	public void scrollBottomofPage()
 	{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -128,5 +135,28 @@ public class vendorBasicpage
         }
     }
 	
+	public String setRandomBusinessName()
+	   {
+		 String randomstring=RandomStringUtils.random(4,"abcdefghijklmnopqrstuvwxyz");
+		 return "Remember me"+randomstring;
+	   }
+	
+	 public String setRandomName()
+	   {
+		 String randomstring=RandomStringUtils.random(3,"abcdefghijklmnopqrstuvwxyz");
+		 return "Sandeep"+randomstring;
+	   }
+	 
+	 public String setRandomEmail()
+	   {
+		 String randomstring=RandomStringUtils.random(3,"abcdefghijklmnopqrstuvwxyz");
+		 return "sandeep"+"+QA"+randomstring+"@rokkun.io";
+	   }
+	 
+	 public String setRandomMobileNumber()
+	   {
+		  String randomnumeric=RandomStringUtils.randomNumeric(6);
+		  return "9620"+randomnumeric;
+	   }
 	
 }

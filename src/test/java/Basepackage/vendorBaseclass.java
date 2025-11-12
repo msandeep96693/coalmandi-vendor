@@ -22,6 +22,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import vendorpageobject.vendorBusinesscreationpage;
 import vendorpageobject.vendorsigninpage;
 
 
@@ -32,6 +33,7 @@ public class vendorBaseclass {
 	public Properties prop;
 	public WebDriver driver;
 	public vendorsigninpage vendorsign;
+	public vendorBusinesscreationpage vendorcreate;
 	
 	
 	
