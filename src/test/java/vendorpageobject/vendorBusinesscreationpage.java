@@ -283,28 +283,28 @@ import org.testng.annotations.Test;
 				String iecdateno, String DnBno 
 				) throws InterruptedException, AWTException  
 		{ 
-			vendorsigninpage signin =  new vendorsigninpage(driver);
-			signin.vendorsignin("jyoti+1@rokkun.io", "Jyoti@123");  // String email, String pwd, 
+//			vendorsigninpage signin =  new vendorsigninpage(driver);
+//			signin.vendorsignin("jyoti+1@rokkun.io", "Jyoti@123");  // String email, String pwd, 
 			
-//			createaccountpage account = new createaccountpage(driver);
-//			account.createbusinessaccount(mobilenumber, createpassword, confirmpassword);
+			vendorcreateaccountpage account = new vendorcreateaccountpage(driver);
+			account.createbusinessaccount(mobilenumber, createpassword, confirmpassword);
 			
 			// click on the create business profile button
-//			waitforElement(btnCreateBusinessProfile);
-//			btnCreateBusinessProfile.click();
+			waitforElement(btnCreateBusinessProfile);
+			btnCreateBusinessProfile.click();
 			
-			Thread.sleep(3000);
-			waitforElement(profileicon);
-			javascriptclick(profileicon);
-			
-			waitforElement(settingbtn);
-			javascriptclick(settingbtn);
-			
-			waitforElement(businessprofiletab);
-			javascriptclick(businessprofiletab);
-			
-			waitforElement(addbusinessprofilebtn);
-			javascriptclick(addbusinessprofilebtn);
+//			Thread.sleep(3000);
+//			waitforElement(profileicon);
+//			javascriptclick(profileicon);
+//			
+//			waitforElement(settingbtn);
+//			javascriptclick(settingbtn);
+//			
+//			waitforElement(businessprofiletab);
+//			javascriptclick(businessprofiletab);
+//			
+//			waitforElement(addbusinessprofilebtn);
+//			javascriptclick(addbusinessprofilebtn);
 			
 			// upload a business profile image
 			try {

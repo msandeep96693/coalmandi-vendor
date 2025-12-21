@@ -3,6 +3,7 @@ package vendorpageobject;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.checkerframework.checker.interning.qual.FindDistinct;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -36,14 +37,26 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 	@FindBy(xpath = "(//input[@type='number'])[2]")
 	private WebElement carbonfield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[3]")
+	@FindBy(xpath = "(//input[@type='number'])[4]")
 	private WebElement ashcontentfield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[4]")
+	@FindBy(xpath = "(//input[@type='number'])[6]")
 	private WebElement volatilefield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[5]")
+	@FindBy(xpath = "(//input[@type='number'])[8]")
 	private WebElement moisturefield;
+	
+	@FindBy(xpath = "(//input[@type='number'])[3]")
+	private WebElement vendorcarbonfield;
+	
+	@FindBy(xpath = "(//input[@type='number'])[5]")
+	private WebElement vendorashfield;
+	
+	@FindBy(xpath = "(//input[@type='number'])[7]")
+	private WebElement vendorvolatilefield;
+	
+	@FindBy(xpath = "(//input[@type='number'])[9]")
+	private WebElement vendormoisturefield;
 	
 	@FindBy(xpath = "//div[@class='ant-form-item-control-input-content']/textarea")
 	private WebElement notetextarea;
@@ -66,6 +79,20 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 	@FindBy(xpath = "//button[.='Reports']")
 	private WebElement leftnavreportbutton;
 	
+	@FindBy(xpath = "//span[.='All Status']")
+	private WebElement clickonstatusdropdown;
+	
+	@FindBy(xpath = "//div[@class='ant-select-item ant-select-item-option']")
+	private List<WebElement> statusoptionlist;
+	
+	@FindBy(xpath = "//button[.='View Detai']")
+	private List<WebElement> viewdetailsbtn;
+	
+	@FindBy(xpath = "//button[.='Upload Report']")
+	private List<WebElement> uploadreportbtn;
+	
+	
+	
 	
 	public void createQAreport(String email, String pwd, String statusoptionname,
 			 String QTYinputdata,String percentageinputdata, String noteinputfield
@@ -79,45 +106,46 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 		waitforElement(leftnavcontractbutton);
 		javascriptclick(leftnavcontractbutton);
 		
-		// click on the view details page based on a status
-				for(int i = 0; i<contractlistdata.size(); i++)
-				{
-						String contractdata = contractlistdata.get(i).getText().trim();
-						System.out.println("contract data :- "+ contractdata);
-						if(contractdata.contains(statusoptionname))
-						{
-							clickonviewdetailsbutton();
-							break;
-						}		
-				}
-				
-				
-		// cross check report form getting current url 	
-		String reportformurl = driver.getCurrentUrl();
-		System.out.println("Report Form URL :- "+reportformurl);
+		waitforElement(clickonstatusdropdown);
+		clickonstatusdropdown.click();
+		
+		// inprogress option
+		statusoptionlist.get(0).click();
+		
+		// click on view details
+		viewdetailsbtn.get(0).click();
+		
+		scrollBottomofPage();
 		
 		// click on upload report button
 		waitforElement(uploadreportbutton);
 		javascriptclick(uploadreportbutton);
 		
+		// coal specification
+//		waitforElement(carbonfield);
+//		carbonfield.sendKeys(percentageinputdata);
+//		
+//		waitforElement(ashcontentfield);
+//		ashcontentfield.sendKeys(percentageinputdata);
+//		
+//		waitforElement(volatilefield);
+//		volatilefield.sendKeys(percentageinputdata);
+//		
+//		waitforElement(moisturefield);
+//		moisturefield.sendKeys(percentageinputdata);
 		
-		// Enter the data into input fields
-		waitforElement(QTYfield);
-		QTYfield.sendKeys(QTYinputdata);
+		// vendor coal specification
+		waitforElement(vendorcarbonfield);
+		vendorcarbonfield.sendKeys(percentageinputdata);
 		
-		waitforElement(carbonfield);
-		carbonfield.sendKeys(percentageinputdata);
+		waitforElement(vendorashfield);
+		vendorashfield.sendKeys(percentageinputdata);
 		
-		waitforElement(ashcontentfield);
-		ashcontentfield.sendKeys(percentageinputdata);
+		waitforElement(vendorvolatilefield);
+		vendorvolatilefield.sendKeys(percentageinputdata);
 		
-		waitforElement(volatilefield);
-		volatilefield.sendKeys(percentageinputdata);
-		
-		waitforElement(moisturefield);
-		moisturefield.sendKeys(percentageinputdata);
-		
-		
+		waitforElement(vendormoisturefield);
+		vendormoisturefield.sendKeys(percentageinputdata);
 		
 		waitforElement(notetextarea);
 		notetextarea.sendKeys(noteinputfield);

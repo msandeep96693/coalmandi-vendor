@@ -36,14 +36,26 @@ public class vendorcreatereportpage extends vendorBasicpage {
 	@FindBy(xpath = "(//input[@type='number'])[2]")
 	private WebElement carbonfield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[3]")
+	@FindBy(xpath = "(//input[@type='number'])[4]")
 	private WebElement ashcontentfield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[4]")
+	@FindBy(xpath = "(//input[@type='number'])[6]")
 	private WebElement volatilefield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[5]")
+	@FindBy(xpath = "(//input[@type='number'])[8]")
 	private WebElement moisturefield;
+	
+	@FindBy(xpath = "(//input[@type='number'])[3]")
+	private WebElement vendorcarbonfield;
+	
+	@FindBy(xpath = "(//input[@type='number'])[5]")
+	private WebElement vendorashfield;
+	
+	@FindBy(xpath = "(//input[@type='number'])[7]")
+	private WebElement vendorvolatilefield;
+	
+	@FindBy(xpath = "(//input[@type='number'])[9]")
+	private WebElement vendormoisturefield;
 	
 	@FindBy(xpath = "//div[@class='ant-form-item-control-input-content']/textarea")
 	private WebElement notetextarea;
@@ -88,21 +100,31 @@ public class vendorcreatereportpage extends vendorBasicpage {
 		
 		selectDropdownOption(contractdropdownoptionlist, "266");
 		
-		// Enter the data into input fields
-				waitforElement(QTYfield);
-				QTYfield.sendKeys(QTYinputdata);
-				
-				waitforElement(carbonfield);
-				carbonfield.sendKeys(percentageinputdata);
-				
-				waitforElement(ashcontentfield);
-				ashcontentfield.sendKeys(percentageinputdata);
-				
-				waitforElement(volatilefield);
-				volatilefield.sendKeys(percentageinputdata);
-				
-				waitforElement(moisturefield);
-				moisturefield.sendKeys(percentageinputdata);
+		// coal specification
+//		waitforElement(carbonfield);
+//		carbonfield.sendKeys(percentageinputdata);
+//		
+//		waitforElement(ashcontentfield);
+//		ashcontentfield.sendKeys(percentageinputdata);
+//		
+//		waitforElement(volatilefield);
+//		volatilefield.sendKeys(percentageinputdata);
+//		
+//		waitforElement(moisturefield);
+//		moisturefield.sendKeys(percentageinputdata);
+		
+		// vendor coal specification
+		waitforElement(vendorcarbonfield);
+		vendorcarbonfield.sendKeys(percentageinputdata);
+		
+		waitforElement(vendorashfield);
+		vendorashfield.sendKeys(percentageinputdata);
+		
+		waitforElement(vendorvolatilefield);
+		vendorvolatilefield.sendKeys(percentageinputdata);
+		
+		waitforElement(vendormoisturefield);
+		vendormoisturefield.sendKeys(percentageinputdata);
 				
 				
 				

@@ -100,9 +100,11 @@ public class vendorcreateaccountpage extends vendorBasicpage {
 		Thread.sleep(2000);
 		javascriptclick(sendotpbutton);
 		
-		// enter otp into textfields and click enter button on keyboard
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(35));
-		wait.until(d -> whatsappotpinputfield.stream().allMatch(field -> !field.getAttribute("value").isEmpty()));
+//		// enter otp into textfields and click enter button on keyboard
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(35));
+//		wait.until(d -> whatsappotpinputfield.stream().allMatch(field -> !field.getAttribute("value").isEmpty()));
+		
+		Thread.sleep(30000);
 		
 		// enter password
 		waitforElement(enterpassword);
@@ -117,13 +119,13 @@ public class vendorcreateaccountpage extends vendorBasicpage {
 		javascriptclick(createaccountbtn);
 		
 		
-//		// click on logout button
-		Thread.sleep(3000);
-		waitforElement(logoutbutton);
-		javascriptclick(logoutbutton);
-//		
-//		// check navigate to the loginpage
-		System.out.println(driver.getCurrentUrl()); 
+////		// click on logout button
+//		Thread.sleep(3000);
+//		waitforElement(logoutbutton);
+//		javascriptclick(logoutbutton);
+////		
+////		// check navigate to the loginpage
+//		System.out.println(driver.getCurrentUrl()); 
 	}
 
 
