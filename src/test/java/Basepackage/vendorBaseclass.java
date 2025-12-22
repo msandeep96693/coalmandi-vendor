@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -72,6 +73,7 @@ public class vendorBaseclass {
 		}
 		
 		driver.manage().window().maximize();
+//		driver.manage().window().setSize(new Dimension(1920, 1080));
 //		driver.get("https://v3opend.tech-active.com");
 		driver.get(prop.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

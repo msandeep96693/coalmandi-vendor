@@ -1,14 +1,18 @@
 package vendorpageobject;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.checkerframework.checker.interning.qual.FindDistinct;
+import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class vendorcontractQAreportpage  extends vendorBasicpage {
 
@@ -25,8 +29,8 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 	@FindBy(xpath = "//button[.='View Details']")
 	private List<WebElement> listofviewdetailsbutton;
 	
-	@FindBy(xpath = "//button[.='Upload Report']")
-	private WebElement uploadreportbutton;
+	@FindBy(xpath = "//span[.='Upload Report']")
+	private List<WebElement> uploadreportbutton;
 	
 	@FindBy(xpath = "//label[@class='ant-form-item-required']")
 	private List<WebElement> listoflabeltextfield;
@@ -37,13 +41,13 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 	@FindBy(xpath = "(//input[@type='number'])[2]")
 	private WebElement carbonfield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[4]")
+	@FindBy(xpath = "(//input[@type='number'])[3]")
 	private WebElement ashcontentfield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[6]")
+	@FindBy(xpath = "(//input[@type='number'])[4]")
 	private WebElement volatilefield;
 	
-	@FindBy(xpath = "(//input[@type='number'])[8]")
+	@FindBy(xpath = "(//input[@type='number'])[5]")
 	private WebElement moisturefield;
 	
 	@FindBy(xpath = "(//input[@type='number'])[3]")
@@ -88,14 +92,15 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 	@FindBy(xpath = "//button[.='View Detai']")
 	private List<WebElement> viewdetailsbtn;
 	
-	@FindBy(xpath = "//button[.='Upload Report']")
-	private List<WebElement> uploadreportbtn;
+	@FindBy(xpath = "//span[.='View Report']")
+	private List<WebElement> viewreportbtn;
+	
+	@FindBy(xpath = "//span[.='Upload Report' or .='View Report']")
+	private List<WebElement> reportButtons;
 	
 	
-	
-	
-	public void createQAreport(String email, String pwd, String statusoptionname,
-			 String QTYinputdata,String percentageinputdata, String noteinputfield
+	public void createQAreport(String email, String pwd,
+			 String percentageinputdata, String noteinputfield
 			
 			) throws InterruptedException
 	{
@@ -109,68 +114,27 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 		waitforElement(clickonstatusdropdown);
 		clickonstatusdropdown.click();
 		
-		// inprogress option
-		statusoptionlist.get(0).click();
-		
+		// inprogress option 
+		javascriptclick(statusoptionlist.get(0));
+		Thread.sleep(2000);
+		 
 		// click on view details
-		viewdetailsbtn.get(0).click();
+		javascriptclick(viewdetailsbtn.get(0));
 		
 		scrollBottomofPage();
 		
-		// click on upload report button
-		waitforElement(uploadreportbutton);
-		javascriptclick(uploadreportbutton);
-		
-		// coal specification
-//		waitforElement(carbonfield);
-//		carbonfield.sendKeys(percentageinputdata);
-//		
-//		waitforElement(ashcontentfield);
-//		ashcontentfield.sendKeys(percentageinputdata);
-//		
-//		waitforElement(volatilefield);
-//		volatilefield.sendKeys(percentageinputdata);
-//		
-//		waitforElement(moisturefield);
-//		moisturefield.sendKeys(percentageinputdata);
-		
-		// vendor coal specification
-		waitforElement(vendorcarbonfield);
-		vendorcarbonfield.sendKeys(percentageinputdata);
-		
-		waitforElement(vendorashfield);
-		vendorashfield.sendKeys(percentageinputdata);
-		
-		waitforElement(vendorvolatilefield);
-		vendorvolatilefield.sendKeys(percentageinputdata);
-		
-		waitforElement(vendormoisturefield);
-		vendormoisturefield.sendKeys(percentageinputdata);
-		
-		waitforElement(notetextarea);
-		notetextarea.sendKeys(noteinputfield);
-		
-		// upload a business profile image  // /home/active34/Downloads/photos /QA club photos/business logo.jpeg
-		
-		List<String> files = new ArrayList();
-		files.add("C:\\Users\\User\\Desktop\\Background images\\Bg-1.jpg");
-		files.add("C:\\Users\\User\\Desktop\\Background images\\Bg-2.jpg");
-		files.add("C:\\Users\\User\\Desktop\\Background images\\Bg-3.jpg");
+		// create QA Report
 
-		uploadFilesMultipleTimes(files);
+		// with private mine coal data - listing coal spec and vendor coal specification
+		handleReportButtons1(percentageinputdata);
 		
-		scrollBottomofPage();
+//		// without private mine coal data - only vendor coal specification
+//		handleReportButtons2(percentageinputdata);
+		
+
 			
-			waitforElement(createreportbutton);
-			javascriptclick(createreportbutton);
-			
-			Thread.sleep(4000);
-			
-		for(int i = 0; i<=reportlistofdata.size(); i++)
-		{
-			String listofdata = reportlistofdata.get(0).getText().trim();
-			System.out.println("Uploaded report list data :- "+ listofdata);
-		}
+		
+
 		
 		waitforElement(vendorprofileicon);
 		javascriptclick(vendorprofileicon);
@@ -203,6 +167,168 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 	            uploadfiles.sendKeys(filePath);
 	            System.out.println("Retry Uploaded: " + filePath);
 	        }
+	    }
+	}
+	
+	public void handleReportButtons1(String percentageinputdata) throws InterruptedException 
+	{
+		boolean shouldLogout = false;	
+		
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	    By uploadBtnBy = By.xpath("//span[.='Upload Report']");
+	    By allReportBtnBy = By.xpath("//span[.='Upload Report' or .='View Report']");
+
+	    while (true) {
+
+	        // 🔁 Always re-fetch
+	        List<WebElement> uploadButtons = driver.findElements(uploadBtnBy);
+
+	        // ✅ BREAK CONDITION — no Upload Report available
+	        if (uploadButtons.isEmpty()) {
+	            System.out.println("ℹ️ No Upload Report button available. Exiting loop.");
+	            shouldLogout = true;   // 👈 mark for logout
+	            break;   
+	        }
+
+	        WebElement btn = uploadButtons.get(0); // SAFE
+
+	        // ✅ Scroll to center
+	        js.executeScript(
+	                "arguments[0].scrollIntoView({block:'center'});",
+	                btn
+	        );
+
+	        // ✅ Click Upload Report
+	        wait.until(ExpectedConditions.elementToBeClickable(btn)).click();
+	        Thread.sleep(500);
+
+	        // ---------- YOUR EXISTING LOGIC ----------
+	        waitforElement(vendorcarbonfield);
+	        vendorcarbonfield.sendKeys(percentageinputdata);
+
+	        waitforElement(vendorashfield);
+	        vendorashfield.sendKeys(percentageinputdata);
+
+	        waitforElement(vendorvolatilefield);
+	        vendorvolatilefield.sendKeys(percentageinputdata);
+
+	        waitforElement(vendormoisturefield);
+	        vendormoisturefield.sendKeys(percentageinputdata);
+
+	        waitforElement(notetextarea);
+	        notetextarea.sendKeys("QA report uploaded with qty");
+
+	        List<String> files = new ArrayList<>();
+	        files.add("/home/active34/Downloads/photos /QA club photos/Club 7.png");
+	        files.add("/home/active34/Downloads/photos /QA club photos/Club 7.png");
+	        files.add("/home/active34/Downloads/photos /QA club photos/Club 7.png");
+
+	        uploadFilesMultipleTimes(files);
+
+	        scrollBottomofPage();
+
+	        waitforElement(createreportbutton);
+	        javascriptclick(createreportbutton);
+
+	        Thread.sleep(1500);
+
+	        System.out.println("✅ One QA report uploaded successfully");
+
+	        // Loop continues → checks again if Upload Report exists
+	        
+	        if (shouldLogout) {
+	            System.out.println("🔐 Logging out vendor after loop completion");
+
+	            waitforElement(vendorprofileicon);
+	            javascriptclick(vendorprofileicon);
+
+	            waitforElement(vendorlogoutbutton);
+	            javascriptclick(vendorlogoutbutton);
+	        }
+
+	    }
+	}
+
+	public void handleReportButtons2(String percentageinputdata) throws InterruptedException 
+	{
+		boolean shouldLogout = false;	
+		
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	    By uploadBtnBy = By.xpath("//span[.='Upload Report']");
+	    By allReportBtnBy = By.xpath("//span[.='Upload Report' or .='View Report']");
+
+	    while (true) {
+
+	        // 🔁 Always re-fetch
+	        List<WebElement> uploadButtons = driver.findElements(uploadBtnBy);
+
+	        // ✅ BREAK CONDITION — no Upload Report available
+	        if (uploadButtons.isEmpty()) {
+	            System.out.println("ℹ️ No Upload Report button available. Exiting loop.");
+	            shouldLogout = true;   // 👈 mark for logout
+	            break;   
+	        }
+
+	        WebElement btn = uploadButtons.get(0); // SAFE
+
+	        // ✅ Scroll to center
+	        js.executeScript(
+	                "arguments[0].scrollIntoView({block:'center'});",
+	                btn
+	        );
+
+	        // ✅ Click Upload Report
+	        wait.until(ExpectedConditions.elementToBeClickable(btn)).click();
+	        Thread.sleep(500);
+
+	        // ---------- YOUR EXISTING LOGIC ----------
+	        waitforElement(carbonfield);
+	        carbonfield.sendKeys(percentageinputdata);
+	        
+	        waitforElement(ashcontentfield);
+	        ashcontentfield.sendKeys(percentageinputdata);
+
+	        waitforElement(volatilefield);
+	        volatilefield.sendKeys(percentageinputdata);
+
+	        waitforElement(moisturefield);
+	        moisturefield.sendKeys(percentageinputdata);
+
+	        waitforElement(notetextarea);
+	        notetextarea.sendKeys("QA report uploaded with qty");
+
+	        List<String> files = new ArrayList<>();
+	        files.add("/home/active34/Downloads/photos /QA club photos/Club 7.png");
+	        files.add("/home/active34/Downloads/photos /QA club photos/Club 7.png");
+	        files.add("/home/active34/Downloads/photos /QA club photos/Club 7.png");
+
+	        uploadFilesMultipleTimes(files);
+
+	        scrollBottomofPage();
+
+	        waitforElement(createreportbutton);
+	        javascriptclick(createreportbutton);
+
+	        Thread.sleep(1500);
+
+	        System.out.println("✅ One QA report uploaded successfully");
+
+	        // Loop continues → checks again if Upload Report exists
+	        
+	        if (shouldLogout) {
+	            System.out.println("🔐 Logging out vendor after loop completion");
+
+	            waitforElement(vendorprofileicon);
+	            javascriptclick(vendorprofileicon);
+
+	            waitforElement(vendorlogoutbutton);
+	            javascriptclick(vendorlogoutbutton);
+	        }
+
 	    }
 	}
 

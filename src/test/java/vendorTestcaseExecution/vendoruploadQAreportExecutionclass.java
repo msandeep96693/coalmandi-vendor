@@ -8,12 +8,14 @@ import vendorpageobject.vendorcontractQAreportpage;
 
 public class vendoruploadQAreportExecutionclass extends vendorBaseclass {
 
-	@Test
+	// working
+	@Test(priority = 1, enabled = true)
 	public void QAreportuploadpage() throws InterruptedException
 	{
 		vendorcontractQAreportpage QAreport = new vendorcontractQAreportpage(driver);
-		QAreport.createQAreport(prop.getProperty("vendoremail"), prop.getProperty("password"), prop.getProperty("statusoptionname"), 
-				prop.getProperty("QTyinputdata"), prop.getProperty("percentageinputdata"), 
-				prop.getProperty("noteinputfield"));
+		QAreport.createQAreport(prop.getProperty("vendoremail"), prop.getProperty("password"), 
+				prop.getProperty("percentageinputdata"),prop.getProperty("noteinputfield"));
 	}
+	
+	
 }
