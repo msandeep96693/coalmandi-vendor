@@ -2,31 +2,31 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-22T14:17:04 IST" name="Default suite" finished-at="2025-12-22T14:17:43 IST" duration-ms="38720">
+  <suite started-at="2025-12-23T10:49:51 IST" name="Default suite" finished-at="2025-12-23T10:52:13 IST" duration-ms="142620">
     <groups>
     </groups>
-    <test started-at="2025-12-22T14:17:04 IST" name="Default test" finished-at="2025-12-22T14:17:43 IST" duration-ms="38720">
-      <class name="vendorTestcaseExecution.vendoruploadQAreportExecutionclass">
-        <test-method is-config="true" signature="setup()[pri:0, instance:vendorTestcaseExecution.vendoruploadQAreportExecutionclass@7c729a55]" started-at="2025-12-22T14:17:04 IST" name="setup" finished-at="2025-12-22T14:17:08 IST" duration-ms="3428" status="PASS">
+    <test started-at="2025-12-23T10:49:51 IST" name="Default test" finished-at="2025-12-23T10:52:13 IST" duration-ms="142620">
+      <class name="vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass">
+        <test-method is-config="true" signature="setup()[pri:0, instance:vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass@7c729a55]" started-at="2025-12-23T10:49:51 IST" name="setup" finished-at="2025-12-23T10:49:53 IST" duration-ms="2337" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="QAreportuploadpage()[pri:1, instance:vendorTestcaseExecution.vendoruploadQAreportExecutionclass@7c729a55]" started-at="2025-12-22T14:17:08 IST" name="QAreportuploadpage" finished-at="2025-12-22T14:17:43 IST" duration-ms="35123" status="PASS">
+        <test-method signature="TradercreatebusinessprofileExecutionclass()[pri:0, instance:vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass@7c729a55]" started-at="2025-12-23T10:49:53 IST" name="TradercreatebusinessprofileExecutionclass" finished-at="2025-12-23T10:52:13 IST" duration-ms="140145" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- QAreportuploadpage -->
-        <test-method is-config="true" signature="tear(org.testng.ITestResult)[pri:0, instance:vendorTestcaseExecution.vendoruploadQAreportExecutionclass@7c729a55]" started-at="2025-12-22T14:17:43 IST" name="tear" finished-at="2025-12-22T14:17:43 IST" duration-ms="114" status="PASS">
+        </test-method> <!-- TradercreatebusinessprofileExecutionclass -->
+        <test-method is-config="true" signature="tear(org.testng.ITestResult)[pri:0, instance:vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass@7c729a55]" started-at="2025-12-23T10:52:13 IST" name="tear" finished-at="2025-12-23T10:52:13 IST" duration-ms="96" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=QAreportuploadpage status=SUCCESS method=vendoruploadQAreportExecutionclass.QAreportuploadpage()[pri:1, instance:vendorTestcaseExecution.vendoruploadQAreportExecutionclass@7c729a55] output={null}]]]>
+                <![CDATA[[TestResult name=TradercreatebusinessprofileExecutionclass status=SUCCESS method=vendorcreatebusinessprofileExecutionclass.TradercreatebusinessprofileExecutionclass()[pri:0, instance:vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass@7c729a55] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tear -->
-      </class> <!-- vendorTestcaseExecution.vendoruploadQAreportExecutionclass -->
+      </class> <!-- vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

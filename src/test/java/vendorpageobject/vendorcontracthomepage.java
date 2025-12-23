@@ -22,9 +22,12 @@ public class vendorcontracthomepage extends vendorBasicpage {
 	private WebElement allstatusfilter;
 	
 	@FindBy(xpath = "//div[@class='ant-select-item ant-select-item-option']")
+	private List<WebElement> statusoptionlist;
+	
+	@FindBy(xpath = "//div[@class='ant-select-item ant-select-item-option']")
 	private List<WebElement> statusdropdownoptions;
 	
-	@FindBy(xpath = "//div[@class='ant-card-body']")
+	@FindBy(xpath = "//tbody[@class='ant-table-tbody']/tr/td/span")
 	private List<WebElement> contractlistdata;
 	
 	@FindBy(xpath = "//div[@class='ant-notification-notice-message']")
@@ -59,42 +62,27 @@ public class vendorcontracthomepage extends vendorBasicpage {
 		// Fetch list of data based on search data
 				for(int i = 0; i<=contractlistdata.size(); i++)
 				{
-						String contractdata = contractlistdata.get(i).getText().trim();
-						System.out.println("contract data :- "+ contractdata);
-						break;
+					String contractdata = contractlistdata.get(i).getText().trim();
+					System.out.println("contract data :- "+ contractdata);
+					break;
 				}
 		
 		waitforElement(allstatusfilter);
 		allstatusfilter.click();
 		
-		selectDropdownOption(statusdropdownoptions, statusoptionname);
+		// inprogress option 
+		javascriptclick(statusoptionlist.get(0));
+		Thread.sleep(2000);
 		
 		// Fetch list of data based on status name
 		for(int i = 0; i<=contractlistdata.size(); i++)
 		{
-				String contractdata = contractlistdata.get(i).getText().trim();
-				if(contractdata.contains(statusoptionname))
-				{
-					System.out.println("Contract data :- "+ contractdata);
-					break;
-				}
-		}
-		
-		waitforElement(confirmationsuccessmessage);
-		String confirmationmsg = confirmationsuccessmessage.getText();
-		System.out.println("Created confirmation message :- "+ confirmationmsg);
-		Thread.sleep(2000);
-		
-		// click on the view details page based on a status
-		for(int i = 0; i<=contractlistdata.size(); i++)
-		{
-				String contractdata = contractlistdata.get(i).getText().trim();
-				System.out.println("contract data :- "+ contractdata);
-				if(contractdata.contains(statusoptionname))
-				{
-					clickonviewdetailsbutton();
-					break;
-				}		
+			String contractdata = contractlistdata.get(i).getText().trim();
+			if(contractdata.contains(statusoptionname))
+			{
+				System.out.println("Contract data :- "+ contractdata);
+				break;
+			}
 		}
 		
 		Thread.sleep(2000);

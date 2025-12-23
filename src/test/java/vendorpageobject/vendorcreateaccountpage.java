@@ -104,7 +104,7 @@ public class vendorcreateaccountpage extends vendorBasicpage {
 //		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(35));
 //		wait.until(d -> whatsappotpinputfield.stream().allMatch(field -> !field.getAttribute("value").isEmpty()));
 		
-		Thread.sleep(30000);
+		Thread.sleep(25000);
 		
 		// enter password
 		waitforElement(enterpassword);

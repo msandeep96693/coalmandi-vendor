@@ -19,6 +19,9 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 	public vendorcontractQAreportpage(WebDriver driver) {
 		super(driver);
 	}
+	
+	
+	// ------------ contract QA upload report xpath ---------------------
 
 	@FindBy(xpath = "//button[.='Contracts']")
 	private WebElement leftnavcontractbutton;
@@ -130,12 +133,8 @@ public class vendorcontractQAreportpage  extends vendorBasicpage {
 		
 //		// without private mine coal data - only vendor coal specification
 //		handleReportButtons2(percentageinputdata);
-		
 
-			
-		
-
-		
+		Thread.sleep(2000);
 		waitforElement(vendorprofileicon);
 		javascriptclick(vendorprofileicon);
 		

@@ -117,7 +117,7 @@ import org.testng.annotations.Test;
 		@FindBy(xpath = "(//div[@class='ant-select-selection-overflow'])[2]")
 		private WebElement originofcoaldropdown;
 		
-		@FindBy(xpath = "(//div[@class='ant-select-selector'])[7]")
+		@FindBy(xpath = "(//div[@class='ant-select-selection-overflow'])[3]")
 		private WebElement sourceofcoaldropdown;
 		
 		@FindBy(xpath = "(//div[@class='ant-select-selection-overflow'])[3]")
@@ -283,6 +283,7 @@ import org.testng.annotations.Test;
 				String iecdateno, String DnBno 
 				) throws InterruptedException, AWTException  
 		{ 
+			JavascriptExecutor js = (JavascriptExecutor) driver;
 //			vendorsigninpage signin =  new vendorsigninpage(driver);
 //			signin.vendorsignin("jyoti+1@rokkun.io", "Jyoti@123");  // String email, String pwd, 
 			
@@ -308,12 +309,12 @@ import org.testng.annotations.Test;
 			
 			// upload a business profile image
 			try {
-				Thread.sleep(5000);
-				JavascriptExecutor js = (JavascriptExecutor) driver;
+				Thread.sleep(2000);
+//				JavascriptExecutor js = (JavascriptExecutor) driver;
 				js.executeScript("arguments[0].style.display='block';", uploadProfile);
 				uploadProfile.sendKeys("/home/active34/Downloads/photos /QA club photos/Club 7.png");
 				} catch (ElementNotInteractableException e) {
-					JavascriptExecutor js = (JavascriptExecutor) driver;
+//					JavascriptExecutor js = (JavascriptExecutor) driver;
 					js.executeScript("arguments[0].style.display='block';", uploadProfile);
 					uploadProfile.sendKeys("/home/active34/Downloads/photos /QA club photos/Club 7.png");
 				}  // /home/active34/Downloads/photos /QA club photos/business logo.jpeg
@@ -391,26 +392,26 @@ import org.testng.annotations.Test;
 
 			
 			// Is same as business owner
-			waitforElement(Issameasbusinessownercheckbox);
-			javascriptclick(Issameasbusinessownercheckbox);
+//			waitforElement(Issameasbusinessownercheckbox);
+//			javascriptclick(Issameasbusinessownercheckbox);
 			
 			// contact info data
 			// -----------------------------------
-			// enter contact name 
-//			waitforElement(contactnamefield);
-//			contactnamefield.sendKeys(setRandomName());
-//			
-//			// enter designation 
-//			waitforElement(desginationfield);
-//			desginationfield.sendKeys(designation);
-//			
-//			// enter email 
-//			waitforElement(emailfield);
-//			emailfield.sendKeys(setRandomEmail());
-//			
-//			// enter contact number
-//			waitforElement(mobilenumberfield);
-//			mobilenumberfield.sendKeys(setRandomMobileNumber());
+			 //enter contact name 
+			waitforElement(contactnamefield);
+			contactnamefield.sendKeys(setRandomName());
+			
+			// enter designation 
+			waitforElement(desginationfield);
+			desginationfield.sendKeys(designation);
+			
+			// enter email 
+			waitforElement(emailfield);
+			emailfield.sendKeys(setRandomEmail());
+			
+			// enter contact number
+			waitforElement(mobilenumberfield);
+			mobilenumberfield.sendKeys(setRandomMobileNumber());
 			
 			// click on save & proceed button
 			waitforElement(saveandproceedbutton);
@@ -424,6 +425,9 @@ import org.testng.annotations.Test;
 			
 			Thread.sleep(2000);
 			
+			
+			 js.executeScript("arguments[0].scrollIntoView({block:'center'});", proceedtokycbutton);
+			
 			// click on proceed to kyc button
 			waitforElement(proceedtokycbutton);
 			javascriptclick(proceedtokycbutton);
@@ -432,19 +436,19 @@ import org.testng.annotations.Test;
 			
 			// KYC document
 			// authorization 
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			kycdocuploadandsubmit("Authorization Letter", uploadFiles, submitButtons);
 			
 			
 //			// PAN Card
-			Thread.sleep(3000);
+			Thread.sleep(1500);
 			kycdocuploadandsubmit("PAN Card", uploadFiles, submitButtons);
-			Thread.sleep(3000);
+			Thread.sleep(1500);
 			
 			// GST Certificate 
-			Thread.sleep(3000);
+			Thread.sleep(1500);
 			kycdocuploadandsubmit("GST Certificate", uploadFiles, submitButtons);
-			Thread.sleep(3000);
+			Thread.sleep(1500);
 			
 			// TAN certificate
 			waitforElement(TANnumbertextfield);
@@ -452,7 +456,7 @@ import org.testng.annotations.Test;
 			
 			Thread.sleep(1000);
 			kycdocuploadandsubmit("TAN Certificate", uploadFiles, submitButtons);
-			Thread.sleep(3000);
+			Thread.sleep(1500);
 					
 			// LUT Certificate
 			
@@ -463,7 +467,7 @@ import org.testng.annotations.Test;
 //
 //			// Scroll to element
 //			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-			 JavascriptExecutor js = (JavascriptExecutor) driver;
+			
 			js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
 			
 			waitforElement(LUTradioyesbutton);
@@ -547,22 +551,7 @@ import org.testng.annotations.Test;
 			Thread.sleep(1000);
 			
 			scrollBottomofPage();
-			
-//			// upload again
-//			
-//			Thread.sleep(1000);
-//			kycdocuploadandsubmit("PAN Card", uploadFiles, submitButtons);
-//			Thread.sleep(1000);
-//			
-//			kycdocuploadandsubmit("GST Certificate", uploadFiles, submitButtons);
-//			Thread.sleep(1000);
-//			kycdocuploadandsubmit("TAN Certificate", uploadFiles, submitButtons);
-//			Thread.sleep(1000);
-//			kycdocuploadandsubmit("LUT Certificate", uploadFiles, submitButtons);
-//			Thread.sleep(1000);
-			
-//			scrollBottomofPage();
-			
+					
 			waitforElement(saveproceedbuton);
 			javascriptclick(saveproceedbuton);
 			

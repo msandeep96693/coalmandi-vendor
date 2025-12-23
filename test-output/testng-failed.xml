@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="vendorTestcaseExecution.vendoruploadQAreportExecutionclass">
+      <class name="vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass">
         <methods>
-          <include name="QAreportuploadpage"/>
           <include name="setup"/>
+          <include name="TradercreatebusinessprofileExecutionclass"/>
           <include name="tear"/>
         </methods>
-      </class> <!-- vendorTestcaseExecution.vendoruploadQAreportExecutionclass -->
+      </class> <!-- vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
