@@ -2,31 +2,31 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-23T10:49:51 IST" name="Default suite" finished-at="2025-12-23T10:52:13 IST" duration-ms="142620">
+  <suite started-at="2025-12-24T17:57:04 IST" name="Default suite" finished-at="2025-12-24T17:57:29 IST" duration-ms="24869">
     <groups>
     </groups>
-    <test started-at="2025-12-23T10:49:51 IST" name="Default test" finished-at="2025-12-23T10:52:13 IST" duration-ms="142620">
-      <class name="vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass">
-        <test-method is-config="true" signature="setup()[pri:0, instance:vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass@7c729a55]" started-at="2025-12-23T10:49:51 IST" name="setup" finished-at="2025-12-23T10:49:53 IST" duration-ms="2337" status="PASS">
+    <test started-at="2025-12-24T17:57:04 IST" name="Default test" finished-at="2025-12-24T17:57:29 IST" duration-ms="24869">
+      <class name="vendorTestcaseExecution.vendorcontractlistExecutionclass">
+        <test-method is-config="true" signature="setup()[pri:0, instance:vendorTestcaseExecution.vendorcontractlistExecutionclass@7c729a55]" started-at="2025-12-24T17:57:04 IST" name="setup" finished-at="2025-12-24T17:57:24 IST" duration-ms="20090" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="TradercreatebusinessprofileExecutionclass()[pri:0, instance:vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass@7c729a55]" started-at="2025-12-23T10:49:53 IST" name="TradercreatebusinessprofileExecutionclass" finished-at="2025-12-23T10:52:13 IST" duration-ms="140145" status="PASS">
+        <test-method signature="contractlistpage()[pri:0, instance:vendorTestcaseExecution.vendorcontractlistExecutionclass@7c729a55]" started-at="2025-12-24T17:57:24 IST" name="contractlistpage" finished-at="2025-12-24T17:57:28 IST" duration-ms="4638" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TradercreatebusinessprofileExecutionclass -->
-        <test-method is-config="true" signature="tear(org.testng.ITestResult)[pri:0, instance:vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass@7c729a55]" started-at="2025-12-23T10:52:13 IST" name="tear" finished-at="2025-12-23T10:52:13 IST" duration-ms="96" status="PASS">
+        </test-method> <!-- contractlistpage -->
+        <test-method is-config="true" signature="tear(org.testng.ITestResult)[pri:0, instance:vendorTestcaseExecution.vendorcontractlistExecutionclass@7c729a55]" started-at="2025-12-24T17:57:28 IST" name="tear" finished-at="2025-12-24T17:57:29 IST" duration-ms="93" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TradercreatebusinessprofileExecutionclass status=SUCCESS method=vendorcreatebusinessprofileExecutionclass.TradercreatebusinessprofileExecutionclass()[pri:0, instance:vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass@7c729a55] output={null}]]]>
+                <![CDATA[[TestResult name=contractlistpage status=SUCCESS method=vendorcontractlistExecutionclass.contractlistpage()[pri:0, instance:vendorTestcaseExecution.vendorcontractlistExecutionclass@7c729a55] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tear -->
-      </class> <!-- vendorTestcaseExecution.vendorcreatebusinessprofileExecutionclass -->
+      </class> <!-- vendorTestcaseExecution.vendorcontractlistExecutionclass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

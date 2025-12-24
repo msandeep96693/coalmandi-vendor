@@ -45,8 +45,8 @@ public class vendorcontracthomepage extends vendorBasicpage {
 	@FindBy(xpath = "//button[.='Upload Report']")
 	private WebElement uploadreportbutton;
 	
-	public void contractlistfunctionality(String email, String pwd, String searchbusinessname,
-			String statusoptionname) throws InterruptedException
+	public void contractlistfunctionality(String email, String pwd, String searchbusinessname
+			) throws InterruptedException
 	{
 		vendorsigninpage signin =  new vendorsigninpage(driver);
 		signin.vendorsignin(email, pwd);
@@ -60,30 +60,18 @@ public class vendorcontracthomepage extends vendorBasicpage {
 		searchtextfield.sendKeys(searchbusinessname);
 		
 		// Fetch list of data based on search data
-				for(int i = 0; i<=contractlistdata.size(); i++)
-				{
-					String contractdata = contractlistdata.get(i).getText().trim();
-					System.out.println("contract data :- "+ contractdata);
-					break;
-				}
+		for(int i = 0; i<=contractlistdata.size(); i++)
+		{
+			String contractdata = contractlistdata.get(i).getText().trim();
+			System.out.println("contract data :- "+ contractdata);
+			break;
+		}
 		
 		waitforElement(allstatusfilter);
 		allstatusfilter.click();
 		
 		// inprogress option 
-		javascriptclick(statusoptionlist.get(0));
-		Thread.sleep(2000);
-		
-		// Fetch list of data based on status name
-		for(int i = 0; i<=contractlistdata.size(); i++)
-		{
-			String contractdata = contractlistdata.get(i).getText().trim();
-			if(contractdata.contains(statusoptionname))
-			{
-				System.out.println("Contract data :- "+ contractdata);
-				break;
-			}
-		}
+		javascriptclick(statusoptionlist.get(1));
 		
 		Thread.sleep(2000);
 		
